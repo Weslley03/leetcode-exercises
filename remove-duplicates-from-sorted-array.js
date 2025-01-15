@@ -1,20 +1,3 @@
-// /**
-//  * @param {number[]} nums
-//  * @return {number}
-//  */
-// var removeDuplicates = function(nums) {
-//   let set = new Set(nums); 
-//   const arr = [...set];
-//   const x = nums.length - arr.length
-//   const k = arr.length
-//   let i = 0;
-//   do {
-//     arr.push('_')
-//     i++
-//   } while (i < x);  
-//   return arr
-// };
-
 /**
  * @param {number[]} nums
  * @return {number}
