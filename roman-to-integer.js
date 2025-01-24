@@ -4,21 +4,31 @@
  */
 var romanToInt = function(s) {
   const roman_struct = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+  let count = 0;
 
-  let result = 0;
-
-  for(let i = 0; i < s.length; i++) {
-    let atual_number = roman_struct[s[i]]
-    let next_number = roman_struct[s[i+1]]
-
-    if(next_number > atual_number) {
-      result -= atual_number
+  for(let i = 0;i < s.length; i++) {
+    if(roman_struct[s[i]] < roman_struct[s[i+1]]) {
+      //aqui, o count pode acabar ficando negativo, mas se a estrutura do 'roman_struct' estiver correta, não vai permanecer.
+      count -= roman_struct[s[i]] 
     } else {
-      result += atual_number
+      count += roman_struct[s[i]]
     }
   }
   
-  return result; 
+  return count;
 };
 
-console.log(romanToInt('MCMXCIV'));
+/* 
+transform a roman number to integer
+
+visando apenas uma iteração sobre o array, 
+o algoritmo será O(n), dependendo apenas do tamanho do array
+
+"MCMXCIV"
+'m' é mais C caso for maior, se não é menos
+*/
+
+console.log(romanToInt("IV")); // 4
+console.log(romanToInt("III")); // 3
+console.log(romanToInt("LVIII")); // 58
+console.log(romanToInt("MCMXCIV")); // 1994
