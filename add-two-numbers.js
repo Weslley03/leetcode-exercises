@@ -32,30 +32,30 @@ const listTwo = listTwo1
  * @return {ListNode}
  */
 var addTwoNumbers = function(l1, l2) {
-  let dummy = new ListNode(0)
-  let curr = dummy
-  let carry = 0
-  let sum
+  let result = new ListNode(0)
+  let dummy = result
+  let sum, acc = 0
+  
   while(l1 || l2) {
-    sum = l1.val + l2.val + carry
-    carry = Math.floor(sum/10)
-    curr.next = new ListNode(sum%10)
+    sum = acc
 
-    curr = curr.next
-    l1 = l1.next
-    l2 = l2.next
+    if(l1) {
+      sum += l1.val
+      l1 = l1.next
+    }
+
+    if(l2) {
+      sum += l2.val
+      l2 = l2.next
+    }
+
+    acc = Math.floor(sum/10)
+    dummy.next = new ListNode(sum%10) 
+    dummy = dummy.next
   }
-  return dummy.next
+  
+  return result.next
 };
 
-/*
-i need to resolve this chalenge, is necessary make a sum these two numebers
-and return they as linked list.
-
-REMEBER THIS, IS A LINKED LIST, not array 
-
-list one = [2,4,3] 
-lust two = [5,6,4]
-*/
-
-console.log(addTwoNumbers(listOne, listTwo))
+//l1 = [2,4,3], l2 = [5,6,4]
+console.log(addTwoNumbers(listOne, listTwo)) 
